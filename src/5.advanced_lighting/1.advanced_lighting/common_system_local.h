@@ -10,6 +10,7 @@ public:
 	virtual ~CommonSystemLocal();
 
 	virtual void Error(const char* fmt, ...);
+	virtual void Printf(const char* fmt, ...);
 	virtual void Warning(const char* fmt, ...);
 
 	virtual void SetRescourcePath(const char* res);

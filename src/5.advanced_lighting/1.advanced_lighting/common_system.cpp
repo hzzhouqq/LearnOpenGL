@@ -7,7 +7,7 @@
 #include <sstream>
 #include <iostream>
 
-CommonSystemLocal	commonSystemLocal;
+CommonSystemLocal commonSystemLocal;
 CommonSystem* commonSystem = &commonSystemLocal;
 
 // CommonSystemLocal
@@ -25,7 +25,6 @@ CommonSystemLocal::~CommonSystemLocal()
 
 void CommonSystemLocal::Error(const char* fmt, ...)
 {
-	static const char* errorCaption = { "Error" };
 	va_list		argptr;
 	const size_t errSize = sizeof(m_errorMessage);
 
@@ -35,6 +34,19 @@ void CommonSystemLocal::Error(const char* fmt, ...)
 	va_end(argptr);
 
 	std::cout << "Error: " << m_errorMessage << std::endl;
+}
+
+void CommonSystemLocal::Printf(const char* fmt, ...)
+{
+	va_list		argptr;
+	const size_t size = sizeof(m_message);
+
+	va_start(argptr, fmt);
+	::vsnprintf(m_message, size - 1, fmt, argptr);
+	m_message[size - 1] = '\0';
+	va_end(argptr);
+
+	std::cout << m_message << std::endl;
 }
 
 void CommonSystemLocal::Warning(const char* fmt, ...)

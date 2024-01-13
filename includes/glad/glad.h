@@ -5237,6 +5237,22 @@ GLAPI PFNGLGETPOINTERVKHRPROC glad_glGetPointervKHR;
 #define glGetPointervKHR glad_glGetPointervKHR
 #endif
 
+#ifndef GL_EXT_texture_cube_map
+#define GL_EXT_texture_cube_map 1
+#define GL_NORMAL_MAP_EXT                 0x8511
+#define GL_REFLECTION_MAP_EXT             0x8512
+#define GL_TEXTURE_CUBE_MAP_EXT           0x8513
+#define GL_TEXTURE_BINDING_CUBE_MAP_EXT   0x8514
+#define GL_TEXTURE_CUBE_MAP_POSITIVE_X_EXT 0x8515
+#define GL_TEXTURE_CUBE_MAP_NEGATIVE_X_EXT 0x8516
+#define GL_TEXTURE_CUBE_MAP_POSITIVE_Y_EXT 0x8517
+#define GL_TEXTURE_CUBE_MAP_NEGATIVE_Y_EXT 0x8518
+#define GL_TEXTURE_CUBE_MAP_POSITIVE_Z_EXT 0x8519
+#define GL_TEXTURE_CUBE_MAP_NEGATIVE_Z_EXT 0x851A
+#define GL_PROXY_TEXTURE_CUBE_MAP_EXT     0x851B
+#define GL_MAX_CUBE_MAP_TEXTURE_SIZE_EXT  0x851C
+#endif /* GL_EXT_texture_cube_map */
+
 #ifdef __cplusplus
 }
 #endif

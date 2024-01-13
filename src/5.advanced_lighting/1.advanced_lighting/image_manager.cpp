@@ -41,7 +41,7 @@ qqImage* qqImageManager::ImageFromFile(const char* name,
 	textureFilter_t filter, textureRepeat_t repeat, textureUsage_t usage,
 	cubeFiles_t cubeMap/* = CF_2D*/)
 {
-	qqImage* image = GetImageByName(name);
+	qqImage* image = GetImage(name, filter, repeat, usage);
 	if (image && !image->IsLoaded())
 	{
 		image->ActuallyLoadImage(false);
@@ -54,23 +54,33 @@ qqImage* qqImageManager::ImageFromFile(const char* name,
 	return image;
 }
 
-qqImage* qqImageManager::GetImageByName(const char* name) const
+qqImage* qqImageManager::GetImage(const char* name, textureFilter_t filter /*= TF_DEFAULT*/,
+	textureRepeat_t repeat/* = TR_REPEAT*/, textureUsage_t usage /*= TD_DEFAULT*/) const
 {
-	const qqImage* image = GetConstImageByName(name);
+	const qqImage* image = GetConstImage(name, filter, repeat, usage);
 
 	return const_cast<qqImage*>(image);
 }
 
-const qqImage* qqImageManager::GetConstImageByName(const char* name) const
+/*
+// qqImageManager::GetConstImage
+//
+// 图片管理器中可能存在多个同名的图片对象，因为同一份图片数据的其它参数，
+// 例如的filter, repeat, usage 都是有可能不同的。
+//
+*/
+const qqImage* qqImageManager::GetConstImage(const char* name, textureFilter_t filter/*= TF_DEFAULT*/,
+	textureRepeat_t repeat/* = TR_REPEAT*/, textureUsage_t usage/*= TD_DEFAULT*/) const
 {
 	for (size_t i = 0; i < m_vecImages.size(); i++)
 	{
 		const qqImage* image = m_vecImages[i];
-		const char* imageName = image->GetImageName();
+		const char* imageName = image->GetName();
 
 		if (image && imageName != nullptr)
 		{
-			if (::_stricmp(imageName, name) == 0)
+			if (::_stricmp(imageName, name) == 0 && filter == image->m_filter
+				&& repeat == image->m_repeat && usage == image->m_usage)
 			{
 				return image;
 			}
@@ -88,7 +98,7 @@ qqImage* qqImageManager::GetImageByIndex(size_t index) const
 qqImage* qqImageManager::AllocImage(const char* name)
 {
 	// Make sure the image is unique
-	if (GetConstImageByName(name) != nullptr)
+	if (GetConstImage(name) != nullptr)
 	{
 		commonSystem->Error("imageManager: image %s exists, allocImage failed.", name);
 		return nullptr;
@@ -112,8 +122,8 @@ qqImage* qqImageManager::AllocImage(const char* name)
 		nFoundIndex = static_cast<int>(m_vecImages.size()) - 1;
 	}
 
-	// Alloc image and assign to vector
-	qqImage* newImage = new qqImage();
+	// Alloc image and assign to container
+	qqImage* newImage = new qqImage(name);
 	newImage->m_index = nFoundIndex;
 	newImage->m_imageName = name;
 	m_vecImages[nFoundIndex] = newImage;

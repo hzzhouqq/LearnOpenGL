@@ -14,6 +14,7 @@ public:
 
 	// trace functions
 	virtual void Error(const char* fmt, ...) = 0;
+	virtual void Printf(const char* fmt, ...) = 0;
 	virtual void Warning(const char* fmt, ...) = 0;
 
 };
