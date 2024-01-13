@@ -99,7 +99,7 @@ void qqImage::ActuallyLoadImage(bool fromBackEnd)
 	//int width, height, nrComponents;
 	//unsigned char* pic = stbi_load(path, &width, &height, &nrComponents, 0);
 
-	//// ¼ÓÔØÍ¼Æ¬Êý¾ÝÊ§°Ü£¬½«ÎÆÀí¶ÔÏóÖÐµÄÊý¾Ý³õÊ¼»¯ÎªÁã£¬±£Ö¤Êý¾ÝµÄºÏ·¨ÐÔ¡£
+	//// åŠ è½½å›¾ç‰‡æ•°æ®å¤±è´¥ï¼Œå°†çº¹ç†å¯¹è±¡ä¸­çš„æ•°æ®åˆå§‹åŒ–ä¸ºé›¶ï¼Œä¿è¯æ•°æ®çš„åˆæ³•æ€§ã€‚
 	//if (pic == nullptr)
 	//{
 	//	commonSystem->Warning("Couldn't load image: %s .", GetName());

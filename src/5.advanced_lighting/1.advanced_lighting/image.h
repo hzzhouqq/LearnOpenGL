@@ -1,12 +1,9 @@
 #pragma once
-
 #include "image_opts.h"
-
 //#ifndef GL_GLEXT_VERSION
 //#include <gl/glext.h>
 //#endif
 #include <glad/glad.h>
-
 
 #include <vector>
 #include <string>
@@ -64,7 +61,7 @@ typedef enum
 } imageType_t;
 
 // qqImage
-// 1¡¢¼ÓÔØÍ¼Æ¬Êı¾İÊ±£¬°ÑÍ¼Æ¬Êı¾İ¸ñÊ½Ó³Éäµ½GLÄÚ²¿¸ñÊ½¡£
+// 1ã€åŠ è½½å›¾ç‰‡æ•°æ®æ—¶ï¼ŒæŠŠå›¾ç‰‡æ•°æ®æ ¼å¼æ˜ å°„åˆ°GLå†…éƒ¨æ ¼å¼ã€‚
 class qqImage
 {
 	friend class qqImageManager;
@@ -93,10 +90,10 @@ protected:
 	void AllocImage();
 	void DeriveOpts();
 
-	std::string m_imageName; // Í¼Æ¬Ãû³Æ£¬Í¼Æ¬ÎÄ¼şµÄÏà¶ÔÂ·¾¶Ãû, @res_path@img/a.jpg
+	std::string m_imageName; // å›¾ç‰‡åç§°ï¼Œå›¾ç‰‡æ–‡ä»¶çš„ç›¸å¯¹è·¯å¾„å, @res_path@img/a.jpg
 	size_t m_index;
 	qqImageOpts m_opts; // Parameters that determine the storage method
-	GLuint m_texNum; // GL ÎÆÀí¶ÔÏóºÅ
+	GLuint m_texNum; // GL çº¹ç†å¯¹è±¡å·
 	GLuint m_dataFormat;
 	GLuint m_dataType;
 	GLuint m_internalFormat;
@@ -126,11 +123,11 @@ public:
 	// grid pattern.
 	// Will automatically execute image programs if needed.
 	//@}
-	// ´ÓÎÄ¼ş´´½¨Ò»¸öImage¶ÔÏó¡£³É¹¦ºó»áÓĞÏàÓ¦µÄÍ¼Æ¬Êı¾İºÍOpenGLÎÆÀí¶ÔÏó¡£
+	// ä»æ–‡ä»¶åˆ›å»ºä¸€ä¸ªImageå¯¹è±¡ã€‚æˆåŠŸåä¼šæœ‰ç›¸åº”çš„å›¾ç‰‡æ•°æ®å’ŒOpenGLçº¹ç†å¯¹è±¡ã€‚
 	qqImage* ImageFromFile(const char* name,
 		textureFilter_t filter, textureRepeat_t repeat, textureUsage_t usage,
 		cubeFiles_t cubeMap = CF_2D);
-	// ·ÖÅäÒ»¸öĞÂµÄ¿ÕÊı¾İImage¶ÔÏó¡£
+	// åˆ†é…ä¸€ä¸ªæ–°çš„ç©ºæ•°æ®Imageå¯¹è±¡ã€‚
 	qqImage* AllocImage(const char* name);
 
 	qqImage* GetImage(const char* name, textureFilter_t filter = TF_DEFAULT,

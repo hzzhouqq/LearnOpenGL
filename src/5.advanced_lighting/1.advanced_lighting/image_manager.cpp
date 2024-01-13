@@ -1,5 +1,4 @@
 #include "image.h"
-
 #include "common_system.h"
 
 // qqImageManager
@@ -65,8 +64,8 @@ qqImage* qqImageManager::GetImage(const char* name, textureFilter_t filter /*= T
 /*
 // qqImageManager::GetConstImage
 //
-// Í¼Æ¬¹ÜÀíÆ÷ÖĞ¿ÉÄÜ´æÔÚ¶à¸öÍ¬ÃûµÄÍ¼Æ¬¶ÔÏó£¬ÒòÎªÍ¬Ò»·İÍ¼Æ¬Êı¾İµÄÆäËü²ÎÊı£¬
-// ÀıÈçµÄfilter, repeat, usage ¶¼ÊÇÓĞ¿ÉÄÜ²»Í¬µÄ¡£
+// å›¾ç‰‡ç®¡ç†å™¨ä¸­å¯èƒ½å­˜åœ¨å¤šä¸ªåŒåçš„å›¾ç‰‡å¯¹è±¡ï¼Œå› ä¸ºåŒä¸€ä»½å›¾ç‰‡æ•°æ®çš„å…¶å®ƒå‚æ•°ï¼Œ
+// ä¾‹å¦‚çš„filter, repeat, usage éƒ½æ˜¯æœ‰å¯èƒ½ä¸åŒçš„ã€‚
 //
 */
 const qqImage* qqImageManager::GetConstImage(const char* name, textureFilter_t filter/*= TF_DEFAULT*/,
