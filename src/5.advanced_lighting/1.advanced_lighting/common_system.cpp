@@ -46,7 +46,7 @@ void CommonSystemLocal::Printf(const char* fmt, ...)
 	m_message[size - 1] = '\0';
 	va_end(argptr);
 
-	std::cout << m_message << std::endl;
+	std::cout << m_message;
 }
 
 void CommonSystemLocal::Warning(const char* fmt, ...)

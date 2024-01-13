@@ -52,19 +52,18 @@ void R_InitOpenGL()
 		return;
 	}
 
-	//if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-	//{
-	//	commonSystem->Error("Failed to initialize GLAD");
-	//	return;
-	//}
-
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	{
+		commonSystem->Error("Failed to initialize GLAD");
+		return;
+	}
 
 	// get our config strings
 	glConfig.vendor_string = (const char*)glGetString(GL_VENDOR);
 	glConfig.renderer_string = (const char*)glGetString(GL_RENDERER);
 	glConfig.version_string = (const char*)glGetString(GL_VERSION);
 	glConfig.shading_language_string = (const char*)glGetString(GL_SHADING_LANGUAGE_VERSION);
-	glConfig.extensions_string = (const char*)glGetString(GL_EXTENSIONS);
+	//glConfig.extensions_string = (const char*)glGetString(GL_EXTENSIONS);
 
 	float glVersion = static_cast<float>(atof(glConfig.version_string));
 	float glslVersion = static_cast<float>(atof(glConfig.shading_language_string));

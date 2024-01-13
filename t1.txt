@@ -1,0 +1,13 @@
+
+glGetString(GL_VERSION) returns the version the current GL context is providing,
+not necessarily the highest version your GL implementation is supporting.
+
+GLEW has nothing to do with that, it just loads GL function pointers.
+Relevant is the way you created the context. What you see here is the normal behavior
+of the nvidia driver in recent versions: when you ask it for some GL x.y context, it does return version x.y,
+and not a higher version it would still support.
+
+If you want a 4.5 context, just request a GL 4.5 context. How to do that depends on the way you create the context.
+If you use some libraries like GLFW, GLUT, SDL, Qt, ..., just consult the documentation on how to request a specific
+context version. If you manually create the context via glX, use glXCreateContextAttribsARB with proper
+GLX_CONTEXT_MAJOR_VERSION_ARB and GLX_CONTEXT_MINOR_VERSION_ARB attributes.
